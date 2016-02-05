@@ -86,8 +86,6 @@ void Graph2::generateGraph(int vertexDegree, int range){
 			
 			Weight = rand() % (noOfVertices * 2) + 1; // rand in the range of 1 to noOfVertices*2
 			temp = edgeCount[Src];
-			/*if ((edgeCount[Src] != vertexDegree) && (edgeCount[Dest] != vertexDegree))
-			addEdge(Src, Dest, Weight);*/
 			if ((edgeCount[Src] < vertexDegree) && (edgeCount[Dest] < vertexDegree))
 				addEdge(Src, Dest, Weight);
 			
@@ -284,39 +282,6 @@ void Graph2::DkstrMaxCapMaxHeap(int s, int t, double* time){
 	}
 	*time = (clock() - start) / (double)CLOCKS_PER_SEC;
 }
-
-/*Graph2* Graph2::KruskalMaxCap(int s, int t){
-	Edge E;
-	E.src = -1;
-	E.dest = -1;
-	E.wt = -1;
-
-	// Sorting all the edges and placing them in heap edge list
-	MaxHeapKrskl A(this);
-	A.generateHeap();
-	//EdgeList* Heap = A.getHeapList();
-	Graph2 Tree(noOfVertices);
-
-	for (int i = 0; i < noOfVertices; i++){
-		MakeSet(i);
-	}
-	for (int i = 0; i < eList.noOfEdges; i++){
-		int r1 = Find(A.getMaximum().src);
-		int r2 = Find(A.getMaximum().dest);
-		if (r1 != r2){
-			Tree.addEdge(A.getMaximum().src, A.getMaximum().dest, A.getMaximum().wt);
-			Union(r1, r2);
-			if (Find(s) == Find(t)) //We got the path from s to t
-				break;
-		}
-		A.deleteHeap();
-		//Heap = A.getHeapList();
-	}
-	//Tree.DFS(s);
-	//DadMaxCap = Tree.getDadMaxCap();
-	//D = Tree.getDistance();
-	return &Tree;
-}*/
 
 void Graph2::DFSVisit(int v, bool visited[])
 {
